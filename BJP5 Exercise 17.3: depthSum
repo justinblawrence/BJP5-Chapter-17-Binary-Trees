@@ -1,0 +1,45 @@
+/*
+Write a method depthSum that returns the sum of the values stored in a binary tree of integers weighted by the depth of each value. 
+You should return the value at the overallRoot plus 2 times the values stored at the next level of the tree plus 3 times the values stored at the next level of 
+the tree plus 4 times the values stored at the next level of the tree and so on. For example, in the tree below:
+
+          +---+
+          | 9 |
+          +---+
+         /     \
+     +---+     +---+
+     | 7 |     | 6 |
+     +---+     +---+
+    /     \         \
++---+     +---+     +---+
+| 3 |     | 2 |     | 4 |
++---+     +---+     +---+
+         /               \
+     +---+               +---+
+     | 5 |               | 2 |
+     +---+               +---+
+The sum would be computed as:
+
+1 * 9 + 2 * (7 + 6) + 3 * (3 + 2 + 4) + 4 * (5 + 2) = 90
+Assume that you are adding this method to the IntTree class as defined below:
+
+public class IntTree {
+    private IntTreeNode overallRoot;
+    ...
+}
+*/
+
+public int depthSum(){
+    int count = 1;
+    return depthSum(overallRoot, count);
+}
+
+private int depthSum(IntTreeNode node, int count){
+    if(node == null){
+        return 0;
+    }else;
+        int sum = node.data;  
+        sum =+ (node.data) * count;
+        count ++;
+    return sum + depthSum(node.right, count) + depthSum(node.left, count);
+}
